@@ -1,0 +1,33 @@
+using sysbus
+
+$central_bin?=@zypherbin\zephyr-ble-central_hr.elf
+$peripheral_bin?=@zypherbin\zephyr-ble-peripheral_hr.elf
+
+emulation CreateBLEMedium "wireless"
+
+mach create "central"
+machine LoadPlatformDescription @platforms/cpus/nrf52840.repl
+connector Connect sysbus.radio wireless
+
+showAnalyzer uart0
+
+mach create "peripheral"
+machine LoadPlatformDescription @platforms/cpus/nrf52840.repl
+connector Connect sysbus.radio wireless
+
+showAnalyzer uart0
+
+emulation SetGlobalQuantum "0.00001"
+
+macro reset
+"""
+    mach set "central"
+    sysbus LoadELF $central_bin
+
+    mach set "peripheral"
+    sysbus LoadELF $peripheral_bin
+"""
+runMacro $reset
+
+echo "Script loaded. Now start with the 'start' command."
+echo ""

@@ -1,0 +1,3 @@
+22:10:02 [INFO] System bus created.
+22:10:02 [INFO] Reading cache
+22:10:03 [INFO] sysbus: Loaded SVD: C:\Users\ltmin\AppData\Local\Temp\renode-14988\d6f819b1-0e1d-4d20-93fd-e60873665bd4.tmp. Name: nrf52840. Description: nRF52840 reference description for radio MCU with ARM 32-bit Cortex-M4 Microcontroller .
